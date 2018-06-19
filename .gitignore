@@ -1,0 +1,8 @@
+
+administrativos/php/class.conexion.php
+ventas/php/class.conexion.php
+postventa/php/class.conexion.php
+*.sql
+php/class.conexion.php
+contabilidad/php/class.conexion.php
+bodega/php/class.conexion.php
