@@ -11,7 +11,7 @@ if(!isset($_SESSION["user_id"]) || $_SESSION["user_id"]==null){
 			echo '<head>';
 			echo '<meta charset="UTF-8">';
 			echo '<title>Registro de fallas</title>';
-			print "<script>window.location='../usuarios_ver.php';</script>";
+			print "<script>window.location='../usuarios_resumen.php';</script>";
 			echo '</head>';
 			echo '<body>';
 			echo '</body>';
@@ -43,13 +43,18 @@ if (isset($_REQUEST)) {
 	 $ip = $_REQUEST['ip'];
 	 $navegador = $_REQUEST['navegador'];
 	 $numero_identificacion = $_REQUEST['numero_identificacion'];
-	 
+	 $rh = $_REQUEST['rh'];
 	 $t_identificacion = $_REQUEST['t_identificacion'];
 	 $telefono = $_REQUEST['telefono'];
 	 $username = $_REQUEST['username'];
 	 
 	 $color = '#'.$_REQUEST['color'];
 
+	 if ($grupo_bodega == 1) {
+	 	$bodega_revision = 1;
+	 }else{
+	 	$bodega_revision = 0;
+	 }
 
 	 if ($departamento == 3) {
 	 	$grupo_ventas_subgrupo = 'asesores';
@@ -63,9 +68,9 @@ if (isset($_REQUEST)) {
 	$acentos = $registro_clientes->query("SET NAMES 'utf8'");
 	if (isset($_REQUEST['password']) && $_REQUEST['password'] != '') {
 		$password = md5($_REQUEST['password']);
-		$sql01 = "UPDATE intranet_usuarios SET apellido = \"$apellido\", ciudad = \"$ciudad\", comentarios = \"$comentarios\", nivel_permisos = \"$departamento\", direccion = \"$direccion\", email = \"$email\", fecha = \"$fecha\", grupo_bodega = \"$grupo_bodega\", grupo_bodega_subgrupo = \"$grupo_bodega_subgrupo\", ip = \"$ip\", navegador = \"$navegador\", nombre = \"$nombre\", cedula = \"$numero_identificacion\", password = \"$password\", t_identificacion = \"$t_identificacion\", telefono = \"$telefono\", username = \"$username\", activo = 1, grupo_ventas_subgrupo = \"$grupo_ventas_subgrupo\", color = \"$color\", colorhex = \"$color\"	WHERE id = \"$user_id\"";
+		$sql01 = "UPDATE intranet_usuarios SET apellido = \"$apellido\", ciudad = \"$ciudad\", comentarios = \"$comentarios\", nivel_permisos = \"$departamento\", direccion = \"$direccion\", email = \"$email\", fecha = \"$fecha\", grupo_bodega = \"$grupo_bodega\", grupo_bodega_subgrupo = \"$grupo_bodega_subgrupo\", ip = \"$ip\", navegador = \"$navegador\", nombre = \"$nombre\", cedula = \"$numero_identificacion\", password = \"$password\", t_identificacion = \"$t_identificacion\", telefono = \"$telefono\", username = \"$username\", activo = 1, grupo_ventas_subgrupo = \"$grupo_ventas_subgrupo\", color = \"$color\", colorhex = \"$color\", bodega_revision = \"$bodega_revision\", rh = \"$rh\"	WHERE id = \"$user_id\"";
 	}else{
-		$sql01 = "UPDATE intranet_usuarios SET apellido = \"$apellido\", ciudad = \"$ciudad\", comentarios = \"$comentarios\", nivel_permisos = \"$departamento\", direccion = \"$direccion\", email = \"$email\", fecha = \"$fecha\", grupo_bodega = \"$grupo_bodega\", grupo_bodega_subgrupo = \"$grupo_bodega_subgrupo\", ip = \"$ip\", navegador = \"$navegador\", nombre = \"$nombre\", cedula = \"$numero_identificacion\", t_identificacion = \"$t_identificacion\", telefono = \"$telefono\", username = \"$username\", activo = 1, grupo_ventas_subgrupo = \"$grupo_ventas_subgrupo\", color = \"$color\", colorhex = \"$color\"	WHERE id = \"$user_id\"";
+		$sql01 = "UPDATE intranet_usuarios SET apellido = \"$apellido\", ciudad = \"$ciudad\", comentarios = \"$comentarios\", nivel_permisos = \"$departamento\", direccion = \"$direccion\", email = \"$email\", fecha = \"$fecha\", grupo_bodega = \"$grupo_bodega\", grupo_bodega_subgrupo = \"$grupo_bodega_subgrupo\", ip = \"$ip\", navegador = \"$navegador\", nombre = \"$nombre\", cedula = \"$numero_identificacion\", t_identificacion = \"$t_identificacion\", telefono = \"$telefono\", username = \"$username\", activo = 1, grupo_ventas_subgrupo = \"$grupo_ventas_subgrupo\", color = \"$color\", colorhex = \"$color\" , bodega_revision = \"$bodega_revision\", rh = \"$rh\"	WHERE id = \"$user_id\"";
 	}
 	
 	

@@ -7,7 +7,10 @@ if(!isset($_SESSION["user_id"]) || $_SESSION["user_id"]==null){
 
 include_once('php/class.conexion.php');
  header("Content-Type: text/html;charset=utf-8");
+
  $user_id = $_SESSION["user_id"];
+ $user_sap = $_SESSION["user_sap"];
+
  include_once('php/consultas_css.php');
 
 //traer tareas hechas
@@ -37,7 +40,7 @@ include_once('php/class.conexion.php');
 <?php
 //traer registro de cliente
   $rcliente = new Conexion;
-  $sql03 = "SELECT *  FROM intranet_actualizacion_clientes WHERE activo = 'si' AND user_id = \"$user_id\" AND tarea IS NULL LIMIT $limit";
+  $sql03 = "SELECT *  FROM intranet_actualizacion_clientes WHERE activo = 'si' AND user_sap = \"$user_sap\" AND tarea IS NULL LIMIT $limit";
   $registro_cliente = $rcliente->query($sql03) or trigger_error($rcliente->error);
   $Nclientes = $rcliente->affected_rows;
   //echo $Nclientes;

@@ -308,7 +308,7 @@ if ($Ntareamess >= '1') {
 
 //traer pedidos del usuario
   $tareamesant = new Conexion;
-  $sql01 = "select count(`intranet_registro_pedido`.`id`) AS `cantidad`,`intranet_registro_pedido`.`encargado_revision` AS `encargado_revision` from `intranet_registro_pedido` where ((`intranet_registro_pedido`.`encargado_revision` <> '') and (month(fecha) = month((curdate() + interval -(1) month)))) group by `intranet_registro_pedido`.`encargado_revision` order by count(`intranet_registro_pedido`.`id`) desc";
+  $sql01 = "select count(`intranet_registro_pedido`.`id`) AS `cantidad`,`intranet_registro_pedido`.`encargado_revision` AS `encargado_revision` from `intranet_registro_pedido` where ((`intranet_registro_pedido`.`encargado_revision` <> '') AND YEAR(fecha) = YEAR(CURDATE()) and (month(fecha) = month((curdate() + interval -(1) month)))) group by `intranet_registro_pedido`.`encargado_revision` order by count(`intranet_registro_pedido`.`id`) desc";
   $tareamessant = $tareamesant->query($sql01) or trigger_error($tareamesant->error);
   $Ntareamessant = $tareamesant->affected_rows;
   $tareamesant->close();
@@ -420,7 +420,7 @@ if ($Ntareamessant >= '1') {
 
 //traer pedidos del usuario
   $tareaano = new Conexion;
-  $sql01 = "select count(`intranet_registro_pedido`.`id`) AS `cantidad`,`intranet_registro_pedido`.`encargado_revision` AS `encargado_revision` from `intranet_registro_pedido` where ((`intranet_registro_pedido`.`encargado_revision` <> '')) group by `intranet_registro_pedido`.`encargado_revision` order by count(`intranet_registro_pedido`.`id`) desc";
+  $sql01 = "select count(`intranet_registro_pedido`.`id`) AS `cantidad`,`intranet_registro_pedido`.`encargado_revision` AS `encargado_revision` from `intranet_registro_pedido` where YEAR(fecha) = YEAR(CURDATE()) AND ((`intranet_registro_pedido`.`encargado_revision` <> '')) group by `intranet_registro_pedido`.`encargado_revision` order by count(`intranet_registro_pedido`.`id`) desc";
   $tareamano = $tareaano->query($sql01) or trigger_error($tareaano->error);
   $Ntareamano = $tareaano->affected_rows;
   $tareaano->close();

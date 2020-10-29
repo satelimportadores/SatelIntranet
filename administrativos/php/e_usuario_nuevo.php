@@ -11,7 +11,7 @@ if(!isset($_SESSION["user_id"]) || $_SESSION["user_id"]==null){
 			echo '<head>';
 			echo '<meta charset="UTF-8">';
 			echo '<title>Registro de fallas</title>';
-			print "<script>window.location='../usuarios_ver.php';</script>";
+			print "<script>window.location='../usuarios_resumen.php';</script>";
 			echo '</head>';
 			echo '<body>';
 			echo '</body>';
@@ -48,11 +48,18 @@ if (isset($_REQUEST)) {
 	 $navegador = $_REQUEST['navegador'];
 	 $nombre = strtoupper ($_REQUEST['nombre']);
 	 $numero_identificacion = $_REQUEST['numero_identificacion'];
+	 $rh = $_REQUEST['rh'];
 	 $password = md5($_REQUEST['password']);
 	 $t_identificacion = $_REQUEST['t_identificacion'];
 	 $telefono = $_REQUEST['telefono'];
 	 $color = '#'.$_REQUEST['color'];
 
+
+			 if ($grupo_bodega == 1) {
+			 	$bodega_revision = 1;
+			 }else{
+			 	$bodega_revision = 0;
+			 }
 
 			 if ($departamento == 3) {
 			 	$grupo_ventas_subgrupo = 'asesores';
@@ -66,7 +73,7 @@ if (isset($_REQUEST)) {
 	//Insertar cliente en la base de datos
 	$registro_clientes = new Conexion ;
 	$acentos = $registro_clientes->query("SET NAMES 'utf8'");
-	$sql01 = "INSERT INTO intranet_usuarios (apellido, ciudad, comentarios, nivel_permisos, direccion, email, fecha, grupo_bodega, grupo_bodega_subgrupo, ip, navegador, nombre, cedula, password, t_identificacion, telefono, username, activo, grupo_ventas_subgrupo, color, colorhex)	VALUES ( \"$apellido\",\"$ciudad\",\"$comentarios\",\"$departamento\",\"$direccion\",\"$email\",\"$fecha\",\"$grupo_bodega\",\"$grupo_bodega_subgrupo\",\"$ip\",\"$navegador\",\"$nombre\",\"$numero_identificacion\",\"$password\",\"$t_identificacion\",\"$telefono\", \"$nombre\",1,\"$grupo_ventas_subgrupo\",\"$color\",\"$color\")";
+	$sql01 = "INSERT INTO intranet_usuarios (apellido, ciudad, comentarios, nivel_permisos, direccion, email, fecha, grupo_bodega, grupo_bodega_subgrupo, ip, navegador, nombre, cedula, password, t_identificacion, telefono, username, activo, grupo_ventas_subgrupo, color, colorhex,bodega_revision,rh)	VALUES ( \"$apellido\",\"$ciudad\",\"$comentarios\",\"$departamento\",\"$direccion\",\"$email\",\"$fecha\",\"$grupo_bodega\",\"$grupo_bodega_subgrupo\",\"$ip\",\"$navegador\",\"$nombre\",\"$numero_identificacion\",\"$password\",\"$t_identificacion\",\"$telefono\", \"$nombre\",1,\"$grupo_ventas_subgrupo\",\"$color\",\"$color\",\"$bodega_revision\",\"$rh\")";
 
 	$insert01 = $registro_clientes->query($sql01) or trigger_error($registro_clientes->error);
 

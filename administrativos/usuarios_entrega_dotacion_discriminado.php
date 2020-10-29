@@ -68,13 +68,12 @@
 					$sql03 = "select `ide`.`id_inv` AS `id_inv`,(select `idi`.`referencia` from `intranet_dotaciones_inventario` `idi` where (`ide`.`id_inv` = `idi`.`id`)) AS `referencia`,(select `idi`.`descripcion` from `intranet_dotaciones_inventario` `idi` where (`ide`.`id_inv` = `idi`.`id`)) AS `descripcion`,(select `idi`.`talla` from `intranet_dotaciones_inventario` `idi` where (`ide`.`id_inv` = `idi`.`id`)) AS `talla`,`ide`.`cantidad` AS `cantidad` from `intranet_dataciones_entrega` `ide` where ((`ide`.`user_id` = \"$user_id\") and (`ide`.`fecha` = \"$fecha\"))";
 					$Rdotacion = $dotacion->query($sql03) or trigger_error($dotacion->error);
 					//traer inventario de dotaciones general 
-
-					while ($s = $Rdotacion->fetch_array()) {
 						echo "<ul>";
-						echo "<li>$s[id_inv] - $s[referencia] - $s[descripcion]- <strong>Talla:</strong> $s[talla] - <strong>Cantidad:</strong> $s[cantidad]</li>";
+							while ($s = $Rdotacion->fetch_array()) {
+								
+								echo "<li><strong>$s[id_inv]</strong> - $s[referencia] - $s[descripcion]- Talla: $s[talla] - <strong>Cantidad:</strong> $s[cantidad]</li>";
+								}
 						echo "</ul>";
-
-						}
 					}
 
 				 ?>

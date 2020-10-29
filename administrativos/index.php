@@ -2,17 +2,16 @@
 session_start();
 if(!isset($_SESSION["user_id"]) || $_SESSION["user_id"]==null){
   print "<script>alert(\"Acceso invalido!\");window.location='../index.php';</script>";
-
-
+}
+if($_SESSION["user_permisos"] <> 1){
+  print "<script>alert(\"Acceso invalido!\");window.location='../index.php';</script>";
 }
 ?>
 
 <?php 
-
 $user_id = $_SESSION["user_id"];
   include_once('php/class.conexion.php');
   include_once('php/consultas_index.php');
-
 ?>
 
 

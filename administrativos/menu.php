@@ -25,6 +25,8 @@
                     <li><a href="satisfaccion.php">Encuesta satisfacción</a></li>
                     <li><a href="resumen_pedidos.php">Resumen de pedidos</a></li>
                     <li><a href="ceder_clientes.php">Ceder clientes</a></li>
+                    <li><a href="../ventas/index.php">Menu ventas</a></li>
+
                     
                     
                   </ul>
@@ -38,6 +40,7 @@
                     <li><a href="pedidos_retrasados.php">Pedidos con retraso</a></li> 
                     <li><a href="resumen_pedidos_alistados.php">Resumen pedidos alistados</a></li>
                     <li><a href="resumen_pedidos_revisados.php">Resumen pedidos revisados</a></li>
+                    <li><a href="../bodega/index.php">Menu bodega</a></li>
                     
                     <h3>compras</h3>
                     <li><a href="domicilios.php">Pendientes por domicilio</a></li>
@@ -56,7 +59,9 @@
                     <h3>Dotaciones</h3>
                     <li><a href="usuarios_entrega_dotacion.php">Entrega de dotación</a></li>
                     <li><a href="usuarios_entrega_ver.php">Ver dotaciones entregadas</a></li>
+                    <li><a href="usuarios_entrega_total.php">Ver dotaciones entregadas totalizado</a></li>
                     <li><a href="inventario_dotaciones.php">Inventario dotaciones</a></li>
+                    <li><a href="usuarios_tallas.php">Tallas empleados</a></li>
                     <h3>Memorandos</h3>
                     <li><a href="usuarios_memorando_adjuntar.php">Adjuntar memorandos</a></li>
                     <li><a href="usuarios_memorando_ver.php">Ver memorandos</a></li>
@@ -95,8 +100,15 @@
                   <ul class="nav child_menu">
 
                     <li><a href="usuarios.php">Crear usuarios</a></li>
-                    <li><a href="usuarios_ver.php">Ver usuarios</a></li>
+                    <li><a href="usuarios_resumen.php">Ver usuarios</a></li>
                     <li><a href="autorizaciones_css.php">Autorizaciones CSS</a></li>
+                  </ul>
+                </li>
+
+                <li><a><i class="fa fa-money"></i>Precios<span class="fa fa-chevron-down"></span></a>
+                  <ul class="nav child_menu" style="display: none">
+
+                    <li><a href="precios_articulos.php">Precios articulos</a></li>
                   </ul>
                 </li>
 

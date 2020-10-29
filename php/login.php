@@ -18,11 +18,12 @@ if(!empty($_POST)){
 
 			$username = $con->real_escape_string($_POST["username"]);
 
-			$sql1= "select * from intranet_usuarios where (username=\"$username\" or email=\"$username\") and password=\"$password\" and activo='1' ";
+			$sql1= "select id,nombre,apellido,nivel_permisos,user_sap from intranet_usuarios where (username=\"$username\" or email=\"$username\") and password=\"$password\" and activo='1' ";
 			
 			$query = $con->query($sql1);
 			while ($r=$query->fetch_array()) {
 				$user_id=$r["id"];
+				$user_sap=$r["user_sap"];
 				$user_permisos=$r["nivel_permisos"];
 				$user_nombre=$r["nombre"]." ".$r["apellido"];
 				break;
@@ -32,7 +33,9 @@ if(!empty($_POST)){
 			}else{
 				
 				$_SESSION["user_id"]=$user_id;
+				$_SESSION["user_sap"]=$user_sap;
 				$_SESSION["user_nombre"]=$user_nombre;
+				$_SESSION["user_permisos"]=$user_permisos;
 				//echo $_SESSION["user_id"];
 
 				//echo $user_permisos;

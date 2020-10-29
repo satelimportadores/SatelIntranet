@@ -22,7 +22,7 @@ if(!isset($_SESSION["user_id"]) || $_SESSION["user_id"]==null){
 	$act_usuario = new Conexion ;
 	$acentos = $act_usuario->query("SET NAMES 'utf8'");
 	if ($accion == 'des') {
-		$sql01 = "UPDATE intranet_usuarios SET activo = NULL WHERE id = \"$user_id\"";
+		$sql01 = "UPDATE intranet_usuarios SET activo = null WHERE id = \"$user_id\"";
 	}
 	if ($accion == 'act') {
 		$sql01 = "UPDATE intranet_usuarios SET activo = 1 WHERE id = \"$user_id\"";

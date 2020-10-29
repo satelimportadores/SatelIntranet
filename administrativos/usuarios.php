@@ -240,6 +240,16 @@ if(!isset($_SESSION["user_id"]) || $_SESSION["user_id"]==null){
                       <div id="error_cedula"></div>
                    </div>
 
+                  <div class="item form-group">
+                      <label class="control-label col-md-3 col-sm-3 col-xs-12" for="rh">Tipo de Sangre RH
+                      </label>
+                      <div class="col-md-6 col-sm-6 col-xs-12">
+                        <input type="text" id="rh" required="" name="rh"  placeholder="0+" data-parsley-minlength="2" class="form-control col-md-7 col-xs-12 has-feedback-left text-uppercase">
+                        <span class="fa fa-superscript form-control-feedback left" aria-hidden="true"></span>
+                      </div>
+                      <div id="error_rh"></div>
+                   </div>
+
 
                    <div class="item form-group">
                       <label for="ciudad" class="control-label col-md-3 col-sm-3 col-xs-12">Ciudad</label>
@@ -465,7 +475,7 @@ if(!isset($_SESSION["user_id"]) || $_SESSION["user_id"]==null){
                      <label class="control-label col-md-3 col-sm-3 col-xs-12" for="alergias">Alergias
                       </label>
                       <div class="col-md-6 col-sm-6 col-xs-12">
-                        <input type="text" id="alergias" name="alergias"  placeholder="NO" class="form-control col-md-7 col-xs-12 has-feedback-left text-uppercase">
+                        <input type="text" id="alergias" name="alergias"  placeholder="NO" class="form-control col-md-7 col-xs-12 has-feedback-left text-uppercase" value="NO">
                         <span class="fa fa-ambulance form-control-feedback left" aria-hidden="true"></span>
                       </div>
                    </div>
@@ -474,7 +484,7 @@ if(!isset($_SESSION["user_id"]) || $_SESSION["user_id"]==null){
                      <label class="control-label col-md-3 col-sm-3 col-xs-12" for="medicamentos">Medicamentos
                       </label>
                       <div class="col-md-6 col-sm-6 col-xs-12">
-                        <input type="text" id="medicamentos" name="medicamentos"  placeholder="NO" class="form-control col-md-7 col-xs-12 has-feedback-left text-uppercase">
+                        <input type="text" id="medicamentos" name="medicamentos"  placeholder="NO" class="form-control col-md-7 col-xs-12 has-feedback-left text-uppercase" value="NO">
                         <span class="fa fa-medkit form-control-feedback left" aria-hidden="true"></span>
                       </div>
                    </div>
@@ -483,7 +493,7 @@ if(!isset($_SESSION["user_id"]) || $_SESSION["user_id"]==null){
                      <label class="control-label col-md-3 col-sm-3 col-xs-12" for="enfermedades">Enfermedades
                       </label>
                       <div class="col-md-6 col-sm-6 col-xs-12">
-                        <input type="text" id="enfermedades" name="enfermedades"  placeholder="NO" class="form-control col-md-7 col-xs-12 has-feedback-left text-uppercase">
+                        <input type="text" id="enfermedades" name="enfermedades"  placeholder="NO" class="form-control col-md-7 col-xs-12 has-feedback-left text-uppercase" value="NO">
                         <span class="fa fa-stethoscope form-control-feedback left" aria-hidden="true"></span>
                       </div>
                    </div>
@@ -584,7 +594,7 @@ if(!isset($_SESSION["user_id"]) || $_SESSION["user_id"]==null){
                      <label class="control-label col-md-3 col-sm-3 col-xs-12" for="talla_botas">Talla de Botas
                       </label>
                       <div class="col-md-6 col-sm-6 col-xs-12">
-                        <input type="text" id="talla_botas" name="talla_botas"  placeholder="M" class="form-control col-md-7 col-xs-12 has-feedback-left text-uppercase">
+                        <input type="text" id="talla_botas" name="talla_botas"  placeholder="38" class="form-control col-md-7 col-xs-12 has-feedback-left text-uppercase">
                         <span class="fa fa-medkit form-control-feedback left" aria-hidden="true"></span>
                       </div>
                    </div>
@@ -593,7 +603,7 @@ if(!isset($_SESSION["user_id"]) || $_SESSION["user_id"]==null){
                      <label class="control-label col-md-3 col-sm-3 col-xs-12" for="talla_pantalon">Talla de Pantalon
                       </label>
                       <div class="col-md-6 col-sm-6 col-xs-12">
-                        <input type="text" id="talla_pantalon" name="talla_pantalon"  placeholder="34" class="form-control col-md-7 col-xs-12 has-feedback-left text-uppercase">
+                        <input type="text" id="talla_pantalon" name="talla_pantalon"  placeholder="32" class="form-control col-md-7 col-xs-12 has-feedback-left text-uppercase">
                         <span class="fa fa-medkit form-control-feedback left" aria-hidden="true"></span>
                       </div>
                    </div>
@@ -602,7 +612,7 @@ if(!isset($_SESSION["user_id"]) || $_SESSION["user_id"]==null){
                      <label class="control-label col-md-3 col-sm-3 col-xs-12" for="talla_camisa">Talla de Camisa
                       </label>
                       <div class="col-md-6 col-sm-6 col-xs-12">
-                        <input type="text" id="talla_camisa" name="talla_camisa"  placeholder="34" class="form-control col-md-7 col-xs-12 has-feedback-left text-uppercase">
+                        <input type="text" id="talla_camisa" name="talla_camisa"  placeholder="M" class="form-control col-md-7 col-xs-12 has-feedback-left text-uppercase">
                         <span class="fa fa-medkit form-control-feedback left" aria-hidden="true"></span>
                       </div>
                    </div>

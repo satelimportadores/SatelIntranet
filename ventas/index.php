@@ -10,9 +10,9 @@ $ipsatel = '186.154.217.122';
 
 
  //impedor acceso a ventas y bodega si no es la IP de Satel  
- if ($ip  != $ipsatel) {
- print "<script>alert(\"Acceso desde una dirección IP invalida!\");window.location='php/logout.php';</script>";
- }  
+ //if ($ip  != $ipsatel) {
+ //print "<script>alert(\"Acceso desde una dirección IP invalida!\");window.location='php/logout.php';</script>";
+ //}  
  //impedor acceso a ventas y bodega si no es la IP de Satel  
 
 ?>
@@ -331,30 +331,14 @@ $user_id = $_SESSION["user_id"];
                       <ul class="list-unstyled top_profiles scroll-view">
 
                         <?php 
-                              //Consulta top de Llamadas
 
-                                    $topllamadas = new Conexion;
-                                    $sql01 = "SELECT COUNT(cardcode) as cant,cardcode FROM intranet_actualizacion_clientes_comentarios WHERE user_id = \"$user_id\" GROUP BY cardcode ORDER BY cant DESC LIMIT 4";
-                                    $Rtopllamadas = $topllamadas->query($sql01) or trigger_error($topllamadas->error);
-                                    $topllamadas->close();
-
-                              //Consulta top de Llamadas
+                          //Consulta top de Llamadas
 
                                     while ($r = $Rtopllamadas->fetch_array()) {
                                           $topcant = $r['cant'];
-                                          $topcardcode = $r['cardcode'];
+                                          $cardcode = $r['cardcode'];
 
-                                              //Consulta datos del carcode
-
-                                                        $concardname = new Conexion;
-                                                        $sql01 = "SELECT * FROM intranet_actualizacion_clientes WHERE cardcode = \"$topcardcode\"";
-                                                        $Rconcardname = $concardname->query($sql01) or trigger_error($concardname->error);
-                                                        $s = $Rconcardname->fetch_array();
-                                                        $cardname = $s['cardname'];
-                                                        $cardcode = $s['cardcode'];
-                                                        $concardname->close();
-
-                                              //Consulta datos del carcode
+                                          $cardname = $r['cardname'];
 
                                         echo "<li class='media event'>";
                                         echo "<a class='pull-left border-green profile_thumb'><i class='fa fa-phone green'></i></a>";
@@ -403,30 +387,13 @@ $user_id = $_SESSION["user_id"];
 
 
                           <?php 
-                              //Consulta top de Pedidos
-
-                                    $toppedidos = new Conexion;
-                                    $sql01 = "SELECT COUNT(cod_cliente) as cant,cod_cliente FROM intranet_registro_pedido WHERE user_id = \"$user_id\" GROUP BY cod_cliente ORDER BY cant DESC LIMIT 4";
-                                    $Rtoppedidos = $toppedidos->query($sql01) or trigger_error($toppedidos->error);
-                                    $toppedidos->close();
-
-                              //Consulta top de Pedidos
+                            //Consulta top de Pedidos
 
                                     while ($r = $Rtoppedidos->fetch_array()) {
                                           $topcantpedidos = $r['cant'];
                                           $topcardcodepedidos = $r['cod_cliente'];
-
-                                              //Consulta datos del carcode
-
-                                                        $concardname01 = new Conexion;
-                                                        $sql01 = "SELECT * FROM intranet_actualizacion_clientes WHERE cardcode = \"$topcardcodepedidos\"";
-                                                        $Rconcardname01 = $concardname01->query($sql01) or trigger_error($concardname01->error);
-                                                        $s = $Rconcardname01->fetch_array();
-                                                        $cardname01 = $s['cardname'];
-                                                        $cardcode01 = $s['cardcode'];
-                                                        $concardname01->close();
-
-                                              //Consulta datos del carcode
+                                          $cardname01 = $r['cardname'];
+                                          $cardcode01 = $r['cod_cliente'];
 
                                         echo "<li class='media event'>";
                                         echo "<a class='pull-left border-blue profile_thumb'><i class='fa fa-file-powerpoint-o blue'></i></a>";

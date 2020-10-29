@@ -194,7 +194,7 @@ if(!isset($_SESSION["user_id"]) || $_SESSION["user_id"]==null){
 
 //traer pedidos del usuario
   $tareames = new Conexion;
-  $sql01 = "select user_id,count(`irp`.`id`) AS `cantidad`,avg(`irp`.`total_pedido`) AS `promedio`,(select `intranet_usuarios`.`nombre` from `intranet_usuarios` where (`intranet_usuarios`.`id` = `irp`.`user_id`)) AS `nombre`,(select `intranet_usuarios`.`apellido` from `intranet_usuarios` where (`intranet_usuarios`.`id` = `irp`.`user_id`)) AS `apellido`,sum(`irp`.`total_pedido`) AS `total` from `intranet_registro_pedido` `irp` where (date_format(`irp`.`fecha`,'%Y-%m') = date_format(now(),'%Y-%m')) group by `irp`.`user_id` order by sum(`irp`.`total_pedido`) desc";
+  $sql01 = "select user_id,count(`irp`.`id`) AS `cantidad`,avg(`irp`.`total_pedido`) AS `promedio`,(select `intranet_usuarios`.`nombre` from `intranet_usuarios` where (`intranet_usuarios`.`id` = `irp`.`user_id`)) AS `nombre`,(select `intranet_usuarios`.`apellido` from `intranet_usuarios` where (`intranet_usuarios`.`id` = `irp`.`user_id`)) AS `apellido`,sum(`irp`.`total_pedido`) AS `total` from `intranet_registro_pedido` `irp` where (date_format(`irp`.`fecha`,'%Y-%m') = date_format(now(),'%Y-%m')) AND intReportes <> 0 group by `irp`.`user_id` order by sum(`irp`.`total_pedido`) desc";
   $tareamess = $tareames->query($sql01) or trigger_error($tareames->error);
   $Ntareamess = $tareames->affected_rows;
   $tareames->close();
@@ -324,7 +324,7 @@ if ($Ntareamess >= '1') {
 
 //traer pedidos del usuario
   $tareamesant = new Conexion;
-  $sql01 = "select user_id,count(`irp`.`id`) AS `cantidad`,avg(`irp`.`total_pedido`) AS `promedio`,(select `intranet_usuarios`.`nombre` from `intranet_usuarios` where (`intranet_usuarios`.`id` = `irp`.`user_id`)) AS `nombre`,(select `intranet_usuarios`.`apellido` from `intranet_usuarios` where (`intranet_usuarios`.`id` = `irp`.`user_id`)) AS `apellido`,sum(`irp`.`total_pedido`) AS `total` from `intranet_registro_pedido` `irp` where (month(fecha) = month((curdate() + interval -(1) month))) group by `irp`.`user_id` order by sum(`irp`.`total_pedido`) desc";
+  $sql01 = "select user_id,count(`irp`.`id`) AS `cantidad`,avg(`irp`.`total_pedido`) AS `promedio`,(select `intranet_usuarios`.`nombre` from `intranet_usuarios` where (`intranet_usuarios`.`id` = `irp`.`user_id`)) AS `nombre`,(select `intranet_usuarios`.`apellido` from `intranet_usuarios` where (`intranet_usuarios`.`id` = `irp`.`user_id`)) AS `apellido`,sum(`irp`.`total_pedido`) AS `total` from `intranet_registro_pedido` `irp` where YEAR(fecha) = YEAR(CURDATE()) AND (month(fecha) = month((curdate() + interval -(1) month))) AND intReportes <> 0 group by `irp`.`user_id` order by sum(`irp`.`total_pedido`) desc";
   $tareamessant = $tareamesant->query($sql01) or trigger_error($tareamesant->error);
   $Ntareamessant = $tareamesant->affected_rows;
   $tareamesant->close();
@@ -454,7 +454,7 @@ if ($Ntareamessant >= '1') {
 
 //traer pedidos del usuario
   $tareaano = new Conexion;
-  $sql01 = "select user_id,count(`irp`.`id`) AS `cantidad`,avg(`irp`.`total_pedido`) AS `promedio`,(select `intranet_usuarios`.`nombre` from `intranet_usuarios` where (`intranet_usuarios`.`id` = `irp`.`user_id`)) AS `nombre`,(select `intranet_usuarios`.`apellido` from `intranet_usuarios` where (`intranet_usuarios`.`id` = `irp`.`user_id`)) AS `apellido`,sum(`irp`.`total_pedido`) AS `total` from `intranet_registro_pedido` `irp`  group by `irp`.`user_id` order by sum(`irp`.`total_pedido`) desc";
+  $sql01 = "select user_id,count(`irp`.`id`) AS `cantidad`,avg(`irp`.`total_pedido`) AS `promedio`,(select `intranet_usuarios`.`nombre` from `intranet_usuarios` where (`intranet_usuarios`.`id` = `irp`.`user_id`)) AS `nombre`,(select `intranet_usuarios`.`apellido` from `intranet_usuarios` where (`intranet_usuarios`.`id` = `irp`.`user_id`)) AS `apellido`,sum(`irp`.`total_pedido`) AS `total` from `intranet_registro_pedido` `irp` where YEAR(fecha) = YEAR(CURDATE()) AND intReportes <> 0 group by `irp`.`user_id` order by sum(`irp`.`total_pedido`) desc";
   $tareamano = $tareaano->query($sql01) or trigger_error($tareaano->error);
   $Ntareamano = $tareaano->affected_rows;
   $tareaano->close();

@@ -14,7 +14,7 @@ if(!isset($_SESSION["user_id"]) || $_SESSION["user_id"]==null){
 	$user_id = $_REQUEST['user_id'];
 //-------tabla intranet_usuarios	
 	$usuario = new conexion;
-	$sql = "SELECT nombre,apellido,t_identificacion,cedula,ciudad,direccion,telefono,email,nivel_permisos,`password`,colorhex,comentarios,username FROM intranet_usuarios WHERE id = \"$user_id\"";
+	$sql = "SELECT nombre,apellido,t_identificacion,cedula,ciudad,direccion,telefono,email,nivel_permisos,`password`,colorhex,comentarios,username,rh FROM intranet_usuarios WHERE id = \"$user_id\"";
 	$rusuario = $usuario->query($sql) or trigger_error($usuario->error);
 	$Nrusuario = $rusuario->num_rows;
 
@@ -25,6 +25,7 @@ if(!isset($_SESSION["user_id"]) || $_SESSION["user_id"]==null){
 			$apellido = $r['apellido'];
 			$t_identificacion = $r['t_identificacion'];
 			$cedula = $r['cedula'];
+			$rh = $r['rh'];
 			$ciudad = $r['ciudad'];
 			$direccion = $r['direccion'];
 			$telefono = $r['telefono'];

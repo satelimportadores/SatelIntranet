@@ -42,6 +42,7 @@ if (isset($_REQUEST)) {
 	 
 	 $forma_pago = $_REQUEST['forma_pago'];
 	 $user_id = $_SESSION["user_id"];
+	 $user_sap = $_SESSION["user_sap"];
 	 $paginaweb = $_REQUEST['paginaweb'];
 
 
@@ -64,7 +65,7 @@ if ($Nclientes == 0) {
 	//Insertar cliente en la base de datos
 	$registro_clientes = new Conexion ;
 	$acentos = $registro_clientes->query("SET NAMES 'utf8'");
-	$sql01 = "INSERT INTO intranet_actualizacion_clientes (fecha,ip,navegador,cardname,cardcode,persona_contacto,ciudad_new,direccion,telefono,movil_new,email_new,sector,comentarios,forma_pago,user_id,paginaweb,cliente_nuevo, activo) VALUES ( \"$fecha\",\"$ip\",\"$navegador\",\"$cardname\",\"$cardcode\",\"$persona_contacto\",\"$ciudad_new\",\"$direccion\",\"$telefono\",\"$movil_new\",\"$email_new\",\"$sector\",\"$cardcode\",\"$forma_pago\",\"$user_id\",\"$paginaweb\",1,'')";
+	$sql01 = "INSERT INTO intranet_actualizacion_clientes (fecha,ip,navegador,cardname,cardcode,persona_contacto,ciudad_new,direccion,telefono,movil_new,email_new,sector,comentarios,forma_pago,user_sap,paginaweb,cliente_nuevo, activo) VALUES ( \"$fecha\",\"$ip\",\"$navegador\",\"$cardname\",\"$cardcode\",\"$persona_contacto\",\"$ciudad_new\",\"$direccion\",\"$telefono\",\"$movil_new\",\"$email_new\",\"$sector\",\"$cardcode\",\"$forma_pago\",\"$user_sap\",\"$paginaweb\",1,'')";
 
 	$insert01 = $registro_clientes->query($sql01) or trigger_error($registro_clientes->error);
 

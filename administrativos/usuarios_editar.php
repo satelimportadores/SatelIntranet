@@ -242,6 +242,16 @@ if(!isset($_SESSION["user_id"]) || $_SESSION["user_id"]==null){
                       </div>
                    </div>
 
+                  <div class="item form-group">
+                      <label class="control-label col-md-3 col-sm-3 col-xs-12" for="rh">Tipo de Sangre RH
+                      </label>
+                      <div class="col-md-6 col-sm-6 col-xs-12">
+                        <input type="text" id="rh" value="" required="" name="rh" placeholder="0+" data-parsley-minlength="2" class="form-control col-md-7 col-xs-12 has-feedback-left text-uppercase">
+                        <span class="fa fa-superscript form-control-feedback left" aria-hidden="true"></span>
+                      </div>
+                      <div id="error_rh"></div>
+                   </div>
+
 
                    <div class="item form-group">
                       <label for="ciudad" class="control-label col-md-3 col-sm-3 col-xs-12">Ciudad</label>

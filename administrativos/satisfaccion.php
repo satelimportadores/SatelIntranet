@@ -12,12 +12,6 @@ if(!isset($_SESSION["user_id"]) || $_SESSION["user_id"]==null){
  header("Content-Type: text/html;charset=utf-8");
 ?>
 
-<?php   
-    
-    
-
-?>
-
 
 <!DOCTYPE html>
 <html lang="en">
@@ -194,7 +188,7 @@ if(!isset($_SESSION["user_id"]) || $_SESSION["user_id"]==null){
 
 //traer postventa del usuario
   $tareames = new Conexion;
-  $sql01 = "select `ipv`.`user_id` AS `user_id`,(select `intranet_usuarios`.`nombre` from `intranet_usuarios` where (`intranet_usuarios`.`id` = `ipv`.`user_id`)) AS `nombre`,(select `intranet_usuarios`.`apellido` from `intranet_usuarios` where (`intranet_usuarios`.`id` = `ipv`.`user_id`)) AS `apellido`,count(`ipv`.`user_id`) AS `total`,sum(`ipv`.`calificacion`) AS `suma`,avg(`ipv`.`calificacion`) AS `promedio` from `intranet_post_venta` `ipv` where (date_format(`ipv`.`fecha`,'%Y-%m') = date_format(now(),'%Y-%m')) group by `ipv`.`user_id` order by count(`ipv`.`user_id`) desc";
+  $sql01 = "select `ipv`.`user_id` AS `user_id`,(select `intranet_usuarios`.`nombre` from `intranet_usuarios` where (`intranet_usuarios`.`id` = `ipv`.`user_id`)) AS `nombre`,(select `intranet_usuarios`.`apellido` from `intranet_usuarios` where (`intranet_usuarios`.`id` = `ipv`.`user_id`)) AS `apellido`,count(`ipv`.`user_id`) AS `total`,sum(`ipv`.`calificacion`) AS `suma`,avg(`ipv`.`calificacion`) AS `promedio` from `intranet_post_venta` `ipv` where YEAR(fecha) = YEAR(CURDATE()) AND (date_format(`ipv`.`fecha`,'%Y-%m') = date_format(now(),'%Y-%m')) and intReportes <> 0 group by `ipv`.`user_id` order by count(`ipv`.`user_id`) desc";
   $tareamess = $tareames->query($sql01) or trigger_error($tareames->error);
   $Ntareamess = $tareames->affected_rows;
   $tareames->close();
@@ -330,7 +324,7 @@ if ($Ntareamess >= '1') {
 
 //traer postventa del usuario
   $tareamesant = new Conexion;
-  $sql01 = "select `ipv`.`user_id` AS `user_id`,(select `intranet_usuarios`.`nombre` from `intranet_usuarios` where (`intranet_usuarios`.`id` = `ipv`.`user_id`)) AS `nombre`,(select `intranet_usuarios`.`apellido` from `intranet_usuarios` where (`intranet_usuarios`.`id` = `ipv`.`user_id`)) AS `apellido`,count(`ipv`.`user_id`) AS `total`,sum(`ipv`.`calificacion`) AS `suma`,avg(`ipv`.`calificacion`) AS `promedio` from `intranet_post_venta` `ipv` where (month(fecha) = month((curdate() + interval -(1) month))) group by `ipv`.`user_id` order by count(`ipv`.`user_id`) desc";
+  $sql01 = "select `ipv`.`user_id` AS `user_id`,(select `intranet_usuarios`.`nombre` from `intranet_usuarios` where (`intranet_usuarios`.`id` = `ipv`.`user_id`)) AS `nombre`,(select `intranet_usuarios`.`apellido` from `intranet_usuarios` where (`intranet_usuarios`.`id` = `ipv`.`user_id`)) AS `apellido`,count(`ipv`.`user_id`) AS `total`,sum(`ipv`.`calificacion`) AS `suma`,avg(`ipv`.`calificacion`) AS `promedio` from `intranet_post_venta` `ipv` where YEAR(fecha) = YEAR(CURDATE()) AND (month(fecha) = month((curdate() + interval -(1) month))) and intReportes <> 0 group by `ipv`.`user_id` order by count(`ipv`.`user_id`) desc";
   $tareamessant = $tareamesant->query($sql01) or trigger_error($tareamesant->error);
   $Ntareamessant = $tareamesant->affected_rows;
   $tareamesant->close();
@@ -464,7 +458,7 @@ if ($Ntareamessant >= '1') {
 
 //traer postventa del usuario
   $tareano = new Conexion;
-  $sql01 = "select `ipv`.`user_id` AS `user_id`,(select `intranet_usuarios`.`nombre` from `intranet_usuarios` where (`intranet_usuarios`.`id` = `ipv`.`user_id`)) AS `nombre`,(select `intranet_usuarios`.`apellido` from `intranet_usuarios` where (`intranet_usuarios`.`id` = `ipv`.`user_id`)) AS `apellido`,count(`ipv`.`user_id`) AS `total`,sum(`ipv`.`calificacion`) AS `suma`,avg(`ipv`.`calificacion`) AS `promedio` from `intranet_post_venta` `ipv`  group by `ipv`.`user_id` order by count(`ipv`.`user_id`) desc";
+  $sql01 = "select `ipv`.`user_id` AS `user_id`,(select `intranet_usuarios`.`nombre` from `intranet_usuarios` where (`intranet_usuarios`.`id` = `ipv`.`user_id`)) AS `nombre`,(select `intranet_usuarios`.`apellido` from `intranet_usuarios` where (`intranet_usuarios`.`id` = `ipv`.`user_id`)) AS `apellido`,count(`ipv`.`user_id`) AS `total`,sum(`ipv`.`calificacion`) AS `suma`,avg(`ipv`.`calificacion`) AS `promedio` from `intranet_post_venta` `ipv` where YEAR(fecha) = YEAR(CURDATE()) and intReportes <> 0  group by `ipv`.`user_id` order by count(`ipv`.`user_id`) desc";
   $tareaano = $tareano->query($sql01) or trigger_error($tareano->error);
   $Ntareanot = $tareano->affected_rows;
   $tareano->close();

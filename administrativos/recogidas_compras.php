@@ -190,7 +190,7 @@ if(!isset($_SESSION["user_id"]) || $_SESSION["user_id"]==null){
 
 //traer pedidos del usuario
   $recogida = new Conexion;
-  $sql01 = "SELECT * FROM intranet_orden_compra WHERE t_entrega = 'Recogida' AND entransito = 1 AND entregado = 1";
+  $sql01 = "SELECT * FROM intranet_orden_compra WHERE recepcion_mercancia is NULL AND t_entrega = 'Recogida'";
   $recogidas = $recogida->query($sql01) or trigger_error($recogida->error);
   $Nrecogidas = $recogida->affected_rows;
   $recogida->close();

@@ -20,7 +20,7 @@ if(!isset($_SESSION["user_id"]) || $_SESSION["user_id"]==null){
 
 	$act_usuario = new Conexion ;
 	$acentos = $act_usuario->query("SET NAMES 'utf8'");
-	$sql01 = "UPDATE intranet_actualizacion_clientes SET tarea = null WHERE user_id = \"$user_id\" AND tarea = 1";
+	$sql01 = "UPDATE intranet_actualizacion_clientes SET tarea = NULL WHERE user_id = \"$user_id\" AND tarea = 1";
 	
 	
 	$insert = $act_usuario->query($sql01) or trigger_error($act_usuario->error);

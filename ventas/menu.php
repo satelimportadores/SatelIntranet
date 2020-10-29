@@ -14,7 +14,7 @@
                   <ul class="nav child_menu" style="display: none">
 
                     <li><a href="contacts.php">Clientes</a></li>
-                    <li><a href="actualizacion.php">Actualización de clientes</a></li>
+                    <li><a href="actualizacion_clientes.php">Actualización de clientes</a></li>
                     <li><a href="cliente_nuevo.php">Cliente nuevo</a></li>
                     <li><a href="tareas.php">Tareas</a></li>
                   </ul>
@@ -42,7 +42,7 @@
                   echo '<li><a><i class="fa fa-money"></i>Precios<span class="fa fa-chevron-down"></span></a>';
                   echo '<ul class="nav child_menu" style="display: none">';
 
-                    echo '<li><a href="precios.php">Ver precios</a>';
+                    echo '<li><a href="precios_articulos.php">Ver precios</a>';
 
 
                   echo '</ul>';

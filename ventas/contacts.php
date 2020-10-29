@@ -11,6 +11,7 @@ if(!isset($_SESSION["user_id"]) || $_SESSION["user_id"]==null){
   include_once('php/class.conexion.php');
  header("Content-Type: text/html;charset=utf-8");
  $user_id = $_SESSION["user_id"];
+ $user_sap = $_SESSION["user_sap"];
    include_once('php/consultas_css.php');
 ?>
 
@@ -24,7 +25,7 @@ if (isset($_REQUEST['letra'])) {
   
 
   $cliente = new Conexion;
-  $sql01 = "SELECT * FROM intranet_actualizacion_clientes WHERE cardname LIKE '$letra%' AND user_id = \"$user_id\" ORDER BY cardname ASC";
+  $sql01 = "SELECT cardcode,cardname,persona_contacto,sector,telefono,direccion FROM intranet_actualizacion_clientes WHERE cardname LIKE '$letra%' AND user_sap = \"$user_sap\" ORDER BY cardname ASC";
   $clientes = $cliente->query($sql01) or trigger_error($cliente->error);
   
 
@@ -60,6 +61,7 @@ $cliente->close();
 <link href="css/impresion.css" rel="stylesheet" type="text/css" media="print">
   <script src="js/jquery.min.js"></script>
  <script src="js/menu.js"></script>
+ <script src="js/consulta_menu.js"></script>
   <script src="js/notify/pnotify.core.js"></script>
   <script src="js/notify/pnotify.buttons.js"></script>
   <script src="js/notify/pnotify.nonblock.js"></script>
@@ -194,35 +196,9 @@ $cliente->close();
                   <div class="row">
 
                     <div class="col-md-12 col-sm-12 col-xs-12" style="text-align:center;">
-                      <ul class="pagination pagination-split">
-                        <li><a href="contacts.php?letra=A">A</a></li>
-                        <li><a href="contacts.php?letra=B">B</a></li>
-                        <li><a href="contacts.php?letra=C">C</a></li>
-                        <li><a href="contacts.php?letra=D">D</a></li>
-                        <li><a href="contacts.php?letra=E">E</a></li>
-                        <li><a href="contacts.php?letra=F">F</a></li>
-                        <li><a href="contacts.php?letra=G">G</a></li>
-                        <li><a href="contacts.php?letra=H">H</a></li>
-                        <li><a href="contacts.php?letra=I">I</a></li>
-                        <li><a href="contacts.php?letra=J">J</a></li>
-                        <li><a href="contacts.php?letra=K">K</a></li>
-                        <li><a href="contacts.php?letra=L">L</a></li>
-                        <li><a href="contacts.php?letra=M">M</a></li>
-                        <li><a href="contacts.php?letra=N">N</a></li>
-                        <li><a href="contacts.php?letra=O">O</a></li>
-                        <li><a href="contacts.php?letra=P">P</a></li>
-                        <li><a href="contacts.php?letra=Q">Q</a></li>
-                        <li><a href="contacts.php?letra=R">R</a></li>
-                        <li><a href="contacts.php?letra=S">S</a></li>
-                        <li><a href="contacts.php?letra=T">T</a></li>
-                        <li><a href="contacts.php?letra=U">U</a></li>
-                        <li><a href="contacts.php?letra=V">V</a></li>
-                        <li><a href="contacts.php?letra=W">W</a></li>
-                        <li><a href="contacts.php?letra=Y">Y</a></li>
-                        <li><a href="contacts.php?letra=Z">Z</a></li>
-
-
-
+                      <ul class="pagination pagination-split" id="menuABC">
+                          <!-- se carga desde php/consulta_menu.php y consulta_menu.js -->
+                          
                       </ul>
                     </div>
                     <div class="clearfix"></div>
@@ -243,6 +219,7 @@ $cliente->close();
                       echo "<div class='col-md-4 col-sm-4 col-xs-12 animated fadeInDown'>";
                       echo "<div class='well profile_view'>";
                       echo "<div class='col-sm-12'>";
+                      echo "<div class='invisible'>$r[cardcode]</div>";
                       echo "<h2 class='brief'><i>$r[cardname]</i></h2>";
                       echo "<div class='left col-xs-8 '>";
                       
@@ -269,7 +246,7 @@ $cliente->close();
 
                       //contar los comentarios por comen
                         $comen = new Conexion;
-                        $sql01 = "SELECT COUNT(id) as cant FROM intranet_actualizacion_clientes_comentarios WHERE cardcode = \"$r[cardcode]\"";
+                        $sql01 = "SELECT COUNT(id) as cant FROM intranet_actualizacion_clientes_comentarios WHERE cardcode = \"$r[cardcode]\" AND YEAR(fecha) = YEAR(now())";
                         $Rcomen = $comen->query($sql01) or trigger_error($comen->error);
                         $s=$Rcomen->fetch_array();
                         $cantidad = $s['cant'];

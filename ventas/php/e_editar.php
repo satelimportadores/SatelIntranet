@@ -46,7 +46,7 @@ if (isset($_REQUEST)) {
 //Insertar Cliente en la base de datos actualizacion
 	$registro_clientes = new Conexion ;
 	$acentos = $registro_clientes->query("SET NAMES 'utf8'");
-	$sql01 = "UPDATE intranet_actualizacion_clientes SET fecha = \"$fecha\", ip =\"$ip\", navegador =\"$navegador\", persona_contacto = \"$persona_contacto\", ciudad_new = \"$ciudad_new\", direccion = \"$direccion\", telefono = \"$telefono\", movil_new = \"$movil_new\", email_new = \"$email_new\", sector = \"$sector\", comentarios = \"$cardcode\", forma_pago = \"$forma_pago\", paginaweb = \"$paginaweb\",activo = '' WHERE cardcode = \"$cardcode\"";
+	$sql01 = "UPDATE intranet_actualizacion_clientes SET fecha = \"$fecha\", ip =\"$ip\", navegador =\"$navegador\", persona_contacto = \"$persona_contacto\", ciudad_new = \"$ciudad_new\", direccion = \"$direccion\", telefono = \"$telefono\", movil_new = \"$movil_new\", email_new = \"$email_new\", sector = \"$sector\", comentarios = \"$cardcode\", forma_pago = \"$forma_pago\", paginaweb = \"$paginaweb\" WHERE cardcode = \"$cardcode\"";
 	
 	$insert = $registro_clientes->query($sql01) or trigger_error($registro_clientes->error);
 

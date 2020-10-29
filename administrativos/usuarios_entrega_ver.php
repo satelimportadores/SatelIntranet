@@ -146,7 +146,7 @@ if(!isset($_SESSION["user_id"]) || $_SESSION["user_id"]==null){
         <div class="">
           <div class="page-title">
             <div class="title_left">
-              <h3>Entrega de dotación</h3>
+              <h3>Ver entrega de dotación a empleados</h3>
             </div>
 
           </div>

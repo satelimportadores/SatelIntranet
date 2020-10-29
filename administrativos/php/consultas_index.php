@@ -163,7 +163,7 @@ $user_id = $_SESSION["user_id"];
         //Consulta top de Llamadas
 
           $topllamadas = new Conexion;
-          $sql01 = "SELECT COUNT(cardcode) as cant,cardcode FROM intranet_actualizacion_clientes_comentarios GROUP BY cardcode ORDER BY cant DESC LIMIT 4";
+          $sql01 = "SELECT COUNT(cardcode) as cant,cardcode FROM intranet_actualizacion_clientes_comentarios WHERE YEAR(fecha) = YEAR(CURDATE()) GROUP BY cardcode ORDER BY cant DESC LIMIT 4";
           $Rtopllamadas = $topllamadas->query($sql01) or trigger_error($topllamadas->error);
           $topllamadas->close();
 
@@ -175,7 +175,7 @@ $user_id = $_SESSION["user_id"];
         //Consulta top de Pedidos
 
         $toppedidos = new Conexion;
-        $sql01 = "SELECT COUNT(cod_cliente) as cant,cod_cliente FROM intranet_registro_pedido  GROUP BY cod_cliente ORDER BY cant DESC LIMIT 4";
+        $sql01 = "SELECT COUNT(cod_cliente) as cant,cod_cliente FROM intranet_registro_pedido WHERE YEAR(fecha) = YEAR(CURDATE()) GROUP BY cod_cliente ORDER BY cant DESC LIMIT 4";
         $Rtoppedidos = $toppedidos->query($sql01) or trigger_error($toppedidos->error);
         $toppedidos->close();
 

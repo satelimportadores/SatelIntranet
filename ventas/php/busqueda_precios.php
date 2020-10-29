@@ -30,9 +30,9 @@ if (isset($_REQUEST['letra'])) {
 			$codpro = $array['codigo_producto_var'];
 			$stock = $array['stock'];
 			$precio = $array['precio'];
-			$precioformat = number_format((float)$precio, 2, ',', '.');
+			$precioformat = number_format((float)$precio);
 			$precioiva = $precio*(1+0.16);
-			$precioivaformat =   number_format((float)$precioiva, 2, ',', '.');
+			$precioivaformat =   number_format((float)$precioiva);
 			$mensaje .= "<p><strong>Producto:</strong> $nompro <br><strong>Codigo:</strong> $codpro <br><strong>stock:</strong>  $stock <br><strong>precio:</strong> $precioformat <br><strong>precio + IVA:</strong> $precioivaformat<br></p>";
 		}
 	}
@@ -57,9 +57,9 @@ if (isset($_POST['valor'])) {
 			$codpro = $array['codigo_producto_var'];
 			$stock = $array['stock'];
 			$precio = $array['precio'];
-			$precioformat = number_format((float)$precio, 2, ',', '.');
+			$precioformat = number_format((float)$precio);
 			$precioiva = $precio *(1+0.16);
-			$precioivaformat =   number_format((float)$precioiva, 2, ',', '.');
+			$precioivaformat =   number_format((float)$precioiva);
 			$mensaje .= "<p><strong>Producto:</strong> $nompro <br><strong>Codigo:</strong> $codpro <br><strong>stock:</strong>  $stock <br><strong>precio:</strong> $precioformat<br><strong>precio + IVA:</strong> $precioivaformat<br></p>";
 		}
 	}

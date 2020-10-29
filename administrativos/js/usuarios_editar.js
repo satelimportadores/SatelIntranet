@@ -65,6 +65,8 @@ var org_usuario = function(datos_usuario){
                   $("#t_identificacion").val(t_identificacion);
                var cedula =  datos_usuario[i].cedula;
                   $("#numero_identificacion").val(cedula);
+                var rh =  datos_usuario[i].rh;
+                  $("#rh").val(rh);
                var ciudad =  datos_usuario[i].ciudad;
                   $("#ciudad").val(ciudad);
                var direccion =  datos_usuario[i].direccion;

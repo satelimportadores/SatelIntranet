@@ -6,11 +6,11 @@ if(!isset($_SESSION["user_id"]) || $_SESSION["user_id"]==null){
 $ip = $_SERVER['REMOTE_ADDR'];
 $ipsatel = '186.154.217.122';
 
+ //impedir acceso a ventas y bodega si no es la IP de Satel  
+ //if ($ip  != $ipsatel) {
+ //print "<script>alert(\"Acceso desde una dirección IP invalida!\");window.location='php/logout.php';</script>";
+ //}  
  //impedor acceso a ventas y bodega si no es la IP de Satel  
- if ($ip  != $ipsatel) {
-   //print "<script>alert(\"Acceso invalido!\");window.location='php/logout.php';</script>";
-}  
- //impedor acceso a ventas y bodega si no es la IP de Satel 
 ?>
 
 <?php

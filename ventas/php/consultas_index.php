@@ -127,3 +127,27 @@
 //traer post ventas pendientes
 
   ?>
+
+  <?php
+//Consulta top de Llamadas
+
+      $topllamadas = new Conexion;
+      $sql01 = "SELECT COUNT(iacc.cardcode) as cant,iacc.cardcode,iac.cardname FROM intranet_actualizacion_clientes_comentarios iacc INNER JOIN intranet_actualizacion_clientes iac ON iacc.cardcode = iac.cardcode WHERE iacc.user_id = \"$user_id\" AND YEAR(iacc.fecha) = YEAR(now()) GROUP BY iacc.cardcode ORDER BY cant DESC LIMIT 4";
+      $Rtopllamadas = $topllamadas->query($sql01) or trigger_error($topllamadas->error);
+      $topllamadas->close();
+
+//Consulta top de Llamadas
+  ?>
+
+  <?php
+//Consulta top de Pedidos
+
+      $toppedidos = new Conexion;
+      $sql01 = "SELECT COUNT(irp.cod_cliente) as cant,irp.cod_cliente,iac.cardname FROM intranet_registro_pedido irp INNER JOIN intranet_actualizacion_clientes iac on irp.cod_cliente = iac.cardcode WHERE irp.user_id = \"$user_id\" AND YEAR(irp.fecha) = YEAR(now()) GROUP BY irp.cod_cliente ORDER BY cant DESC LIMIT 4";
+      $Rtoppedidos = $toppedidos->query($sql01) or trigger_error($toppedidos->error);
+      $toppedidos->close();
+
+//Consulta top de Pedidos
+
+  ?>
+

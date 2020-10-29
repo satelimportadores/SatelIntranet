@@ -21,14 +21,14 @@
 
  //traer alistamiento
  $encargado_alistamiento = new Conexion;
- $sql01 = "SELECT * from intranet_usuarios where grupo_bodega = 2 AND activo = 1 ORDER BY nombre ASC";
+ $sql01 = "SELECT nombre,apellido from intranet_usuarios where grupo_bodega = 2 AND activo = 1 ORDER BY nombre ASC";
  $Rencargado_alistamiento = $encargado_alistamiento->query($sql01) or trigger_error($encargado_alistamiento->error);
  $encargado_alistamiento->close();
 //traer alistamiento
 
   //traer revisión
  $encargado_revision = new Conexion;
- $sql01 = "SELECT * from intranet_usuarios where grupo_bodega = 1 AND activo = 1 ORDER BY nombre ASC";
+ $sql01 = "SELECT nombre,apellido from intranet_usuarios where bodega_revision = 1 AND activo = 1 ORDER BY nombre ASC";
  $Rencargado_revision = $encargado_revision->query($sql01) or trigger_error($encargado_revision->error);
  $encargado_revision->close();
 //traer revisión

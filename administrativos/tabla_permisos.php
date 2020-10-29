@@ -212,7 +212,7 @@ include('php/consultas_permisos_usuarios.php');
                       </thead>
                       <tbody>
                         <tr>
-                                                  <?php 
+                          <?php 
                             //exec viene desde consultas_permisos_usuarios.php trae los usuarios que deben horas sin repetir
                             while ($reg = $exec->fetch_array()) {
                             $id = $reg['user_id'];
